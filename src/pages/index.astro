@@ -1,0 +1,19 @@
+---
+// Welcome to Astro! Everything between these triple-dash code fences
+// is your "component frontmatter". It never runs in the browser.
+import Header from '../components/Header.astro'
+import Post from '../components/Post.vue'
+---
+<!-- Below is your "component template." It's just HTML, but with
+     some magic sprinkled in to help you build great templates. -->
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, inicial-scale=1">
+  </head>
+  <body class="bg-slate-300">
+    <Header />
+    <div>
+      <Post user="Dog" date="27/10/2022" post="Au" />
+    </div>
+  </body>
+</html>

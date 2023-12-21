@@ -1,0 +1,106 @@
+---
+import DrawerBtn from '../components/DrawerBtn.vue'
+import TagBtn from '../components/TagBtn.vue'
+import IconMenu from '~icons/lucide/menu'
+import IconSearch from '~icons/lucide/search'
+import IconArt from '~icons/lucide/brush'
+import IconTravel from '~icons/lucide/luggage'
+import IconGames from '~icons/lucide/joystick'
+import IconProgramming from '~icons/lucide/code-2'
+import IconPlus from '~icons/lucide/plus'
+import IconFriends from '~icons/lucide/users'
+import IconProfile from '~icons/lucide/user'
+import IconSettings from '~icons/lucide/cog'
+import IconFeed from '~icons/lucide/newspaper'
+import IconChat from '~icons/lucide/message-square'
+import { Image } from 'astro:assets'
+import logoImage from '../../logo.jpg'
+---
+<script>
+const menuBtn = document.getElementById("menu-btn")
+const menuDrawer = document.getElementById("menu-drawer")
+const closeBtn = document.getElementById("close-drawer")
+menuBtn?.addEventListener('click', () => {
+    menuDrawer?.classList.remove('translate-x-full')
+    menuDrawer?.classList.add('translate-x-0')
+    document.body.classList.add('w-screen', 'overflow-hidden')
+
+})
+closeBtn?.addEventListener('click', () => {
+    document.body.classList.remove('w-screen', 'overflow-hidden')
+    menuDrawer?.classList.remove('translate-x-0')
+    menuDrawer?.classList.add('translate-x-full')
+})
+</script>
+<header class="grid grid-cols-[min-content_1fr_min-content] content-center bg-white w-screen">
+    <div class="w-8 h-8 rounded-xl overflow-hidden m-2"><img src="../../logo.jpg" class="w-full h-full object-fit" /> </div>
+    <div class="inline justify-self-center m-2">
+        <form class="border-black border rounded-xl focus-within:border-blue-300 focus-within:border-[2px] flex w-52 h-8 relative shadow-xl py-1 box-border">
+            <input 
+                type="text" 
+                placeholder="Pesquisar"
+                class="bg-transparent px-2 active:rounded-xl"
+            />
+            <button class="pr-2 absolute right-0 bg-white rounded-full inset-y-0" type="button"><IconSearch /></button>
+        </form>
+    </div>
+    <button class="m-2" id="menu-btn"><IconMenu class="w-8 h-8"/></button>
+    <div class="col-span-3 flex gap-4 pt-4 pb-2 px-2 overflow-x-auto scrollbar">
+        <TagBtn title="Art"><IconArt /></TagBtn>
+        <TagBtn title="Travel"><IconTravel/></TagBtn>
+        <TagBtn title="Games"><IconGames/></TagBtn>
+        <TagBtn title="Programming"><IconProgramming/></TagBtn>
+        <TagBtn title="Games"><IconGames/></TagBtn>
+        <TagBtn title="Games"><IconGames/></TagBtn>
+    </div>
+
+</header> 
+<div class="fixed top-0 w-screen h-screen bg-white transition-all translate-x-full" id="menu-drawer">
+    <span id="close-drawer" class="absolute right-0"><IconPlus class="rotate-45 w-8 h-8"/></span>
+    <div class="flex flex-col gap-8 py-8 px-4 text-xl">
+        <DrawerBtn title="Amigos">
+            <IconFriends />
+        </DrawerBtn>
+        <DrawerBtn title="Feed">
+            <IconFeed />
+        </DrawerBtn>
+        <DrawerBtn title="Chat">
+            <IconChat />
+        </DrawerBtn>
+        <DrawerBtn title="Perfil">
+            <IconProfile />
+        </DrawerBtn>
+        <DrawerBtn title="Configuracoes">
+            <IconSettings />
+        </DrawerBtn>
+    </div>
+</div>
+<style>
+    input {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        border: 0;
+    }
+
+	.scrollbar {
+		scrollbar-color: transparent transparent;
+		scrollbar-width: 1px;
+	}
+
+    .scrollbar::-webkit-scrollbar {
+        background: transparent;
+        height: 0px;
+        width: 0px;
+
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #999;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+</style>
